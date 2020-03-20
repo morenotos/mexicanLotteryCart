@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="script.js"></script>
+  </head>
+  <body onload="getTableCart()">
+
+    <select id='numberOfCarts'>
+      <option type = 'text' value = '1'> 1 carta </option>
+      <option type = 'text' value = '2'> 2 cartas </option>
+      <option type = 'text' value = '3'> 3 cartas </option>
+      <option type = 'text' value = '4'> 4 cartas </option>
+    </select>
+    
+    
+    <br>
+
+    <table id="carta">
+      <tr>
+        <td onClick="selectSpace(this)"><img src= 'cartas-de-loteria/21mano.jpg' id="space0"> </td>
+        <td id="item" onClick="selectSpace(this)"><img src='cartas-de-loteria/21mano.jpg' id="space1"></td>
+        <td onClick="selectSpace(this)"><img src="cartas-de-loteria/21mano.jpg" id="space2"></td>
+        <td onClick="selectSpace(this)"><img src='cartas-de-loteria/21mano.jpg' id="space3"</td>
+      </tr>
+      <tr>
+        <td id="item" onClick="selectSpace(this)"><img src='cartas-de-loteria/21mano.jpg' id="space4"</td>
+        <td onClick="selectSpace(this)"><img src='cartas-de-loteria/21mano.jpg' id="space5"</td>
+        <td onClick="selectSpace(this)"><img src='cartas-de-loteria/21mano.jpg' id="space6"</td>
+        <td onClick="selectSpace(this)"><img src='cartas-de-loteria/21mano.jpg' id="space7"</td>
+      </tr>
+      <tr>
+        <td onClick="selectSpace(this)"><img src='cartas-de-loteria/21mano.jpg' id="space8"</td>
+        <td onClick="selectSpace(this)"><img src='cartas-de-loteria/21mano.jpg' id="space9"</td>
+        <td onClick="selectSpace(this)"><img src='cartas-de-loteria/21mano.jpg' id="space10"</td>
+        <td onClick="selectSpace(this)"><img src='cartas-de-loteria/21mano.jpg' id="space11"</td>
+      </tr>
+      <tr>
+        <td onClick="selectSpace(this)"><img src='cartas-de-loteria/21mano.jpg' id="space12"</td>
+        <td onClick="selectSpace(this)"><img src='cartas-de-loteria/21mano.jpg' id="space13"</td>
+        <td onClick="selectSpace(this)"><img src='cartas-de-loteria/21mano.jpg' id="space14"</td>
+        <td onClick="selectSpace(this)"><img src='cartas-de-loteria/21mano.jpg' id="space15"</td>
+      </tr>
+
+    </table>
+
+    <br>
+
+    <button class="button" onClick="cleanCart()">Limpiar Carta</button>
+    <button class="button" onClick="getTableCart()">Nueva Carta</button>  
+    
+    
+        
+  </body>
+</html>
+
