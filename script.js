@@ -106,21 +106,82 @@ function cleanCart() {
 };
 
 
+function getMultipleCarts() {
+  table0_exist = document.getElementById('table0');
+  table1_exist = document.getElementById('table1');
+  table2_exist = document.getElementById('table2');
+  table3_exist = document.getElementById('table3');
 
-/*
-<html>
-<head>
-<script type="text/javascript">
-function random_Image(){    
-var randNum = Math.ceil(Math.random()*3);
-var myImage=document.getElementById('randomImage');
-myImage.src="images/ads/"+ randNum + ".png";
-}
-</script>
-/*
-</head>
-<body onload="random_image();">
-<p align=center><img border="0" src="images/ads/1.png" id="randomImage"></p>
-</body>
-</html>
-*/
+  table_exist_list = [table0_exist, table1_exist, table2_exist, table3_exist];
+  console.log(table_exist_list)
+  console.log(table_exist_list[0])
+
+  for (let i=0; i<4; i++) {
+    if (table_exist_list[i] != null) {
+      document.getElementById('table' + i).remove();
+    } else {
+      continue;
+    }
+  }
+  
+  var numberOfCarts = Number(document.getElementById('numberOfCarts').value);
+  console.log('number of carts: ' + numberOfCarts);
+  var carts = [];
+  let i;
+  for (i=0; i < numberOfCarts; i++) {
+    var cardNumbers = [];
+    while (cardNumbers.length < 16) {
+      var number = Math.floor((Math.random() * 54) + 1);
+      if (cardNumbers.includes(number)) {
+        continue
+      } else {
+          cardNumbers.push(number)
+          //console.log(cardNumbers)
+      }
+    }
+    cardNumbers[6] = cardNumbers[5]
+    carts.push(cardNumbers);
+  }
+  console.log(carts);
+
+  let j = 0
+  let pictureNumber = 0
+  numberList = 0
+  var body = document.body;
+  for (let list of carts) {
+    let table = document.createElement('table');
+    table.setAttribute("id", "table" + j);
+    //console.log(table);
+    j += 1;
+    for (k=0; k < 4; k++) {
+      let row = table.insertRow();
+      for (l=0; l < 4; l++) {
+        var td = row.insertCell();
+        td.addEventListener('click', function() {
+          selectSpace(this);
+        })
+        image = document.createElement('img');
+        image.src = cardPics[carts[numberList][pictureNumber]];
+        image.addEventListener('click', function() {
+          selectSpace(this);
+        })
+        td.appendChild(image);
+        row.appendChild(td);
+        if (pictureNumber == 15) {
+          pictureNumber = 0
+        } else {
+          pictureNumber += 1
+        }
+          
+      }
+    }
+    body.appendChild(table);
+    
+    numberList += 1
+  }
+  
+
+} 
+
+
+
