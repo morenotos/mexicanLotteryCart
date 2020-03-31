@@ -56,32 +56,16 @@ var cardPics = {
   54: 'cartas-de-loteria/54rana.jpeg'
 };
 
-function getTableCart() {
-  var numberOfCarts = document.getElementById('numberOfCarts').value;
-  console.log('number of carts: ' + numberOfCarts);
-  var cardNumbers = [];
-  while (cardNumbers.length < 16) {
-    var number = Math.floor((Math.random() * 54) + 1);
-    if (cardNumbers.includes(number)) {
-      continue
-    } else {
-        cardNumbers.push(number)
-    }
-  }
-  console.log(cardNumbers);
-  cardNumbers[6] = cardNumbers[5]
-  console.log(cardNumbers)
+function tablesExist() {
+  var table0_exist = document.getElementById('table0');
+  var table1_exist = document.getElementById('table1');
+  var table2_exist = document.getElementById('table2');
+  var table3_exist = document.getElementById('table3');
 
-  let j;
-    for (j = 0; j < 16; j++) {
-      image = document.getElementById("space" + j);
-      //console.log(image)
-      //console.log(cardNumbers[j])
-      image.src = cardPics[cardNumbers[j]];
-      //console.log(cardPics[cardNumbers[j]]);
-    }
-  cleanCart();
-    
+  var table_exist_list = [table0_exist, table1_exist, table2_exist, table3_exist];
+  /* console.log(table_exist_list)
+  console.log(table_exist_list[0]) */
+  return table_exist_list;
 }
 
 function selectSpace(id) {
@@ -95,30 +79,31 @@ function selectSpace(id) {
 };
 
 function cleanCart() {
-  var i;
-  var j;
-  for (i = 0; i < 4; i++) {
-    x = document.getElementById("carta").rows[i].cells;
-      for (j = 0; j < 4; j++) {
-        x[j].style.backgroundColor = 'rgb(211, 207, 207)';
+  table_exist_list = tablesExist();
+  console.log(table_exist_list);
+  
+  for (let i=0; i < table_exist_list.length; i++) {
+    if (table_exist_list[i] != null) {
+      for (let j = 0; j < 4; j++) {
+        x = document.getElementById("table" + i).rows[j].cells;
+        for (let k = 0; k < 4; k++) {
+          x[k].style.backgroundColor = 'rgb(211, 207, 207)';
+        }
       }
-  } 
-};
-
+    } else {
+        break;
+    }
+  }
+}
 
 function getMultipleCarts() {
-  table0_exist = document.getElementById('table0');
-  table1_exist = document.getElementById('table1');
-  table2_exist = document.getElementById('table2');
-  table3_exist = document.getElementById('table3');
-
-  table_exist_list = [table0_exist, table1_exist, table2_exist, table3_exist];
-  console.log(table_exist_list)
-  console.log(table_exist_list[0])
+  table_exist_list = tablesExist();
+  console.log(table_exist_list);
 
   for (let i=0; i<4; i++) {
     if (table_exist_list[i] != null) {
       document.getElementById('table' + i).remove();
+      document.getElementById('brCart').remove();
     } else {
       continue;
     }
@@ -127,8 +112,7 @@ function getMultipleCarts() {
   var numberOfCarts = Number(document.getElementById('numberOfCarts').value);
   console.log('number of carts: ' + numberOfCarts);
   var carts = [];
-  let i;
-  for (i=0; i < numberOfCarts; i++) {
+  for (let i=0; i < numberOfCarts; i++) {
     var cardNumbers = [];
     while (cardNumbers.length < 16) {
       var number = Math.floor((Math.random() * 54) + 1);
@@ -162,11 +146,11 @@ function getMultipleCarts() {
         })
         image = document.createElement('img');
         image.src = cardPics[carts[numberList][pictureNumber]];
-        image.addEventListener('click', function() {
+        /*image.addEventListener('click', function() {
           selectSpace(this);
-        })
-        td.appendChild(image);
+        })*/
         row.appendChild(td);
+        td.appendChild(image);
         if (pictureNumber == 15) {
           pictureNumber = 0
         } else {
@@ -175,11 +159,15 @@ function getMultipleCarts() {
           
       }
     }
+
+    br = document.createElement('br');
+    br.setAttribute('id', 'brCart');
+    body.appendChild(br);
     body.appendChild(table);
     
     numberList += 1
   }
-  
+  cleanCart();
 
 } 
 
