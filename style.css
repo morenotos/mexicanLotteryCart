@@ -1,6 +1,8 @@
-#carta {
-  margin-left: auto;
-  margin-right: auto;
+
+
+p {
+  font-family: Helvetica;
+    
 }
 
 td {
@@ -11,6 +13,7 @@ td {
 img {
   max-width: 100px;
   max-height: 600px;
+  padding: 5px 5px;
 }
 
 button {
@@ -26,5 +29,20 @@ button {
   margin: auto;
   cursor: pointer;
   
+}
+
+#numberOfCarts {
+  border-radius: 8px;
+  width: 450px;
+  padding: 5px 10px;
+  font-family: Helvetica;
+  font-size: 16px;
   
 }
+
+/*
+ #table0, #table1, #table2, #table3 {
+  
+  
+}
+*/

@@ -133,6 +133,8 @@ function getMultipleCarts() {
   numberList = 0
   var body = document.body;
   for (let list of carts) {
+    //table_title = document.createElement('p');
+    //table_title.innerHTML = 'Tabla #' + j;
     let table = document.createElement('table');
     table.setAttribute("id", "table" + j);
     //console.log(table);
@@ -163,6 +165,7 @@ function getMultipleCarts() {
     br = document.createElement('br');
     br.setAttribute('id', 'brCart');
     body.appendChild(br);
+    //body.appendChild(table_title);
     body.appendChild(table);
     
     numberList += 1
